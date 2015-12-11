@@ -10,9 +10,9 @@ With a final strike of <%= @game.turn.dmg %> damage! <br><br>
     <% if @game.player_1.poison == true %>
     <%= @game.player_1.name %> is poisoned!!!
     <br><br>
-    <% if @game.opponent == @game.player_1 %>
-        You lose 3 health from the poison!
-    <% end %>
+      <% if @game.opponent == @game.player_1 %>
+          You lose 3 health from the poison!
+      <% end %>
     <% end %>
 
 <br><br>
