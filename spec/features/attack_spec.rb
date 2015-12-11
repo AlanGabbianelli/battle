@@ -15,8 +15,7 @@ feature 'Player 1 attacks player 2' do
 
   scenario 'confirms player 1 has been attacked' do
     sign_in_and_play
-    attack_and_continue
-    click_link('Attack!')
+    2.times { click_link('Attack!') }
     expect(page).to have_content 'Johnny Cash has been attacked by Timmy Jones'
   end
 end

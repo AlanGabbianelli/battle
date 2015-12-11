@@ -1,11 +1,17 @@
-<html>
-  <%= @game.player_1.name %> vs. <%= @game.player_2.name %>
-  <br><br>
-  <%= @game.turn.name %>'s turn
-  <br><br>
-    <%= @game.player_1.name %>: <%= @game.player_1.hp %> HP
-  <br><br>
-<%= @game.player_2.name %>: <%= @game.player_2.hp %> HP
-  <br><br>
-  <a href="/attack">Attack!</a>
-</html>
+<%= @game.player_1_name %> vs. <%= @game.player_2_name %>
+<br><br>
+<%= @game.player_1_name %>: <%= @game.player_1_hp %> HP -----
+<%= @game.player_2_name %>: <%= @game.player_2_hp %> HP
+<br><br>
+
+<% if @game.current_player.hp <= 0 %>
+      <h1><%= @game.opponent_name.upcase %> WINS!!!</h1>
+      <br><br>
+      <a href="/">Start new match!</a>
+<% else %>
+      <%= @game.message %>
+      <br><br>
+      <%= @game.current_player_name %>'s turn
+      <br><br>
+      <a href="/attack">Attack!</a>
+<% end %>

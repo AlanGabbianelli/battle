@@ -10,7 +10,7 @@ feature 'Switch turn' do
 
   scenario 'allows players to switch turn after an attack' do
     sign_in_and_play
-    attack_and_continue
+    click_link('Attack!')
     expect(page).to have_content 'Timmy Jones\'s turn'
   end
 end

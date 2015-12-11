@@ -10,13 +10,12 @@ feature 'Reduce hit points' do
   scenario 'reduces player 2\'s HP after player 1\'s attack' do
     sign_in_and_play
     click_link('Attack!')
-    expect(page).to have_content 'Timmy Jones: 50 hp'
+    expect(page).to have_content 'Timmy Jones: 50 HP'
   end
 
   scenario 'reduces player 1\'s HP after player 2\'s attack' do
     sign_in_and_play
-    attack_and_continue
-    click_link('Attack!')
-    expect(page).to have_content 'Johnny Cash: 50 hp'
+    2.times { click_link('Attack!') }
+    expect(page).to have_content 'Johnny Cash: 50 HP'
   end
 end

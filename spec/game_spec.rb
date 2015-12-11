@@ -1,8 +1,8 @@
 require 'game'
 
 describe Game do
-  let(:johnny) { double :johnny }
-  let(:timmy) { double :timmy }
+  let(:johnny) { double(:johnny, name: 'Johnny Cash') }
+  let(:timmy) { double :timmy, name: 'Timmy Jones' }
   subject(:game) { described_class.new(johnny, timmy)}
 
   describe '#attack' do
@@ -24,9 +24,9 @@ describe Game do
     end
   end
 
-  describe '#turn' do
+  describe '#current_player' do
     it 'starts with player 1' do
-      expect(game.turn).to eq johnny
+      expect(game.current_player).to eq johnny
     end
   end
 
@@ -39,7 +39,15 @@ describe Game do
   describe '#switch_turn' do
     it 'switches turn after an attack' do
       game.switch_turn
-      expect(game.turn).to eq timmy
+      expect(game.current_player).to eq timmy
+    end
+  end
+
+  describe'#message' do
+    it 'displays attack message' do
+      allow(timmy).to receive(:deduct_hp)
+      game.attack(timmy)
+      expect(game.message).to eq 'Timmy Jones has been attacked by Johnny Cash!'
     end
   end
 end
